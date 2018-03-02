@@ -1,11 +1,12 @@
 var mysql = require('../config/mysql');// 获取数据库连接配置
 
-var Task = function() {};   // 预定义一个空的类，接下来只需要往里增加方法即可
+var Menu = function() {};   // 预定义一个空的类，接下来只需要往里增加方法即可
 
-Task.prototype.find = function(id, callback) {   // 增加一个方法，名为find，传入参数为id和回调函数callback
+Menu.prototype.find = function(id, callback) {   // 增加一个方法，名为find，传入参数为id和回调函数callback
 
     // sql查询语句，注意这里的“?”号，它会在query的时候被处理
-    var sql = "SELECT * FROM tasks";
+    var sql = "SELECT* FROM menu";
+    // var sql = "SELECT * FROM menu m,menulink ml,childrenmenu cn where ml.parentId=m.id and ml.childId=cn.id";
     
     // 获取mysql的onelib_pool连接池，以回调的方式处理（即获取成功后，执行下一步）
     mysql.blog_pool.getConnection(function(err, connection) {
@@ -27,4 +28,4 @@ Task.prototype.find = function(id, callback) {   // 增加一个方法，名为f
         });
     });
 };
-module.exports=Task 
+module.exports=Menu 

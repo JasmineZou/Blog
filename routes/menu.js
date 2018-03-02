@@ -1,13 +1,13 @@
 // 引用tasks模型
 // import Task from '../models/task'
-var Task = require('../models/task');
+var Menu = require('../models/menu');
 
 // 根据taskid获取任务数据
-exports.getTask = function(req, res) {
+exports.getMenu = function(req, res) {
     var taskid = req.params.taskid;
-    console.log("我进来了");
-    var task = new Task();
-    task.find(taskid,function(err,result){
+    // console.log("我进来了");
+    var menu = new Menu();
+    menu.find(taskid,function(err,result){
         if(err){
             res.send('没有找到taskid为'+taskid+'的任务');
         }

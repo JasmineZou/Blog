@@ -3,7 +3,8 @@ const next = require('next')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
-const handle = app.getRequestHandler(), task = require('./routes/task')
+const handle = app.getRequestHandler(), 
+menu = require('./routes/menu')
 
 app.prepare()
 .then(() => {
@@ -14,7 +15,7 @@ app.prepare()
   //   const queryParams = { id: req.params.id } 
   //   app.render(req, res, actualPage, queryParams)
   // })
-  server.get('/getTask',task.getTask)
+  server.get('/getMenu',menu.getMenu)
 
   server.get('*', (req, res) => {
     return handle(req, res)
